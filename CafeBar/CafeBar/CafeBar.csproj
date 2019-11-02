@@ -19,6 +19,8 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -88,6 +90,7 @@
     <Content Include="Estilos\JQuery\jquery-1.4.1.js" />
     <Content Include="Estilos\JQuery\jquery-1.9.1.min.js" />
     <Content Include="Estilos\JQuery\jquery.validate.js" />
+    <Content Include="Index.html" />
     <Content Include="Pages\ControlPedidos.aspx" />
     <Content Include="Pages\SalonMesas.aspx" />
     <Content Include="Pages\ucABMPedido.ascx" />
