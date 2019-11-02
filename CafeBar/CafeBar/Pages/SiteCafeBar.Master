@@ -1,0 +1,90 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SiteCafeBar.master.cs" Inherits="CafeBar.Pages.SiteCafeBar" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>.:. Café _ Bar .:.</title>
+  <meta name="description" content="Trabajo Practico - Programacion Avanzada"/>
+  <meta name="keywords" content="website net, bootstrap themes, free template, free bootstrap, free website template"/>
+   
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Satisfy|Bree+Serif|Candal|PT+Sans"/>
+
+    <script type="text/javascript" src="../Estilos/JQuery/jquery-1.4.1.js"></script>
+    <script type="text/javascript" src="../Estilos/JQuery/jquery-1.9.1.min.js"></script>
+
+    <link rel="stylesheet" href="../Estilos/Delicious/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="../Estilos/Delicious/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../Estilos/Delicious/css/style.css" />
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+      <!--banner-->
+      <section id="banner">
+        <div class="bg-color">
+          <header id="header">
+            <div class="container">
+              <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#about">Ver Pedidos</a>
+                <%--<a href="#event">Event</a>--%>
+                <a href="#menu-list">Menu</a>
+                <%--<a href="#contact">Book a table</a>--%>
+              </div>
+              <!-- Use any element to open the sidenav -->
+              <span onclick="openNav()" class="pull-right menu-icon">☰</span>
+            </div>
+          </header>
+          <div class="container">
+            <div class="row">
+              <div class="inner text-center">
+                <h1 class="logo-name">Delicious</h1>
+                <h2>Food To fit your lifestyle & health.</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+  <!-- / banner -->
+    <form id="form1" runat="server">
+    
+                <asp:ContentPlaceHolder ID="MainContent" Runat="Server">
+
+                </asp:ContentPlaceHolder>
+         
+            <asp:ContentPlaceHolder ID="LeftColumnContent" Runat="Server">
+
+            </asp:ContentPlaceHolder>
+       <!-- footer -->
+      <footer class="footer text-center">
+        <div class="footer-top">
+          <div class="row">
+            <div class="col-md-offset-3 col-md-6 text-center">
+              <div class="widget">
+                <h4 class="widget-title">Delicious</h4>
+                <address> Programación Avanzada <br>EFC - UNLaM</address>
+                <div class="social-list">
+                  <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                  <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                </div>
+                <p class="copyright clear-float">
+                  © Cafe_Bar. Todos los derechos reservados
+
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <!-- / footer -->
+ </form>
+    <script src="../Estilos/Delicious/js/jquery.min.js"></script>
+    <script src="../Estilos/Delicious/js/jquery.easing.min.js"></script>
+    <script src="../Estilos/Delicious/js/bootstrap.min.js"></script>
+    <script src="../Estilos/Delicious/js/custom.js"></script>
+    <script src="../Estilos/Delicious/contactform/contactform.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+﻿body {
+}
+
+#encabezadoMaster {
+    background: -webkit-linear-gradient(#FF9933, #C2AA7A); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#FF9933, #C2AA7A); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#FF9933, #C2AA7A); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#FF9933, #C2AA7A); /* Standard syntax */
+}

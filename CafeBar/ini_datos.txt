@@ -1,0 +1,61 @@
+SQL SERVER
+
+create table Pedido(
+	PedidoID int NOT NULL Primary Key,
+	Fecha datetime,
+	Cliente varchar(300),
+	Menu varchar(200),
+	Bebida varchar(200),
+	Postre varchar(200),
+	Estado int,
+	FacturaID
+)
+
+create table Factura(
+	FacturaID int NOT NULL Primary Key,
+	Fecha datetime,
+	Total float,	
+	FormaPago int,
+	Estado int
+)
+--=======================================
+enum Menues
+{
+	CafeSolo = 80.0,
+	CafeConLecheSolo = 80.0,
+	CapuccinoSolo = 80.0,
+	TeSolo = 80.0,
+	CafeConMedialunas = 110.0,
+	CafeConLecheConMedialunas = 120.0,
+	CapuccinoConMedialunas = 120.0,
+	TeConMedialunas = 110.0,
+	CafeConTostado = 140.0,
+	CafeConLecheConTostado = 150.0,
+	CapuccinoConTostado = 150.0,
+	TeConTostado = 140.0,
+    ArrozConPollo = 180.0,
+    MilanesaConGuarnicion = 190.0,
+    Tallarines = 160.0,
+    Tarta = 150.0,
+    Lasagna = 150.0
+}
+
+enum Bebida
+{
+	SinPedir = 0
+	GasesosaChica = 70.0,
+	GasesosaGrande = 90.0,
+	JugoChico = 60.0,
+	JugoGrande = 80.0,
+	Cerveza = 90.0,
+	Vino = 130.0
+}
+
+enum Postre
+{
+	SinPedir = 0,
+	Cafe = 80.0,
+	Flan = 70.0,
+	Helado = 70.0,
+	EnsaladaFrutas = 60.0
+}

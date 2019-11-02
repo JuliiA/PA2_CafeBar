@@ -1,0 +1,10 @@
+C:\Users\javellaneda\Documents\Visual Studio 2012\Projects\CafeBar\Datos\bin\Debug\Datos.dll
+C:\Users\javellaneda\Documents\Visual Studio 2012\Projects\CafeBar\Datos\bin\Debug\Datos.pdb
+C:\Users\javellaneda\Documents\Visual Studio 2012\Projects\CafeBar\Datos\obj\Debug\Datos.dll
+C:\Users\javellaneda\Documents\Visual Studio 2012\Projects\CafeBar\Datos\obj\Debug\Datos.pdb
+C:\Users\evaju\Documents\Visual Studio 2017\CafeBar\Datos\bin\Debug\Datos.dll
+C:\Users\evaju\Documents\Visual Studio 2017\CafeBar\Datos\bin\Debug\Datos.pdb
+C:\Users\evaju\Documents\Visual Studio 2017\CafeBar\Datos\obj\Debug\Datos.csprojAssemblyReference.cache
+C:\Users\evaju\Documents\Visual Studio 2017\CafeBar\Datos\obj\Debug\Datos.csproj.CoreCompileInputs.cache
+C:\Users\evaju\Documents\Visual Studio 2017\CafeBar\Datos\obj\Debug\Datos.dll
+C:\Users\evaju\Documents\Visual Studio 2017\CafeBar\Datos\obj\Debug\Datos.pdb
