@@ -1,5 +1,5 @@
 SQL SERVER
-
+// Le faltan 2 campos a esta tabla para que cumpla con lo requerido en la consigna
 create table Pedido(
 	PedidoID int NOT NULL Primary Key,
 	Fecha datetime,
