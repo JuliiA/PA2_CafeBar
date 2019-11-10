@@ -10,10 +10,10 @@ namespace Datos
 {
     public class PedidoDatos
     {
-
+        private static CafeBarContext context = new CafeBarContext();
         public static bool AltaOModificacion(Pedido nPedido)
         {
-            CafeBarContext context = new CafeBarContext();
+            
             try
             {
                 if (nPedido.PedidoID == 0)
@@ -52,7 +52,6 @@ namespace Datos
         }
 
         public static object GetAllPedidos() {
-            CafeBarContext context = new CafeBarContext();
             var todosLosPedidos = (
                         from p in context.Pedidos
                         where p.Baja == 0
@@ -63,7 +62,6 @@ namespace Datos
         }
 
         public static Pedido GetPedido(int PedidoID) {
-            CafeBarContext context = new CafeBarContext();
             //return null;
             var qPedido = from p in context.Pedidos
                           where p.PedidoID == PedidoID
@@ -75,7 +73,6 @@ namespace Datos
         public static bool BorrarPedido(int PedidoID) {
            try
             {
-                CafeBarContext context = new CafeBarContext();
                 //Borrar tambien la factura asociada
                 FacturaDatos.BorrarFactura(PedidoID);
 
@@ -94,7 +91,6 @@ namespace Datos
 
         public static bool Pagar(int id)
         {
-            CafeBarContext context = new CafeBarContext();
             Pedido pedido = GetPedido(id);
             pedido.Estado = 0;
             context.Entry(pedido).State = EntityState.Modified;

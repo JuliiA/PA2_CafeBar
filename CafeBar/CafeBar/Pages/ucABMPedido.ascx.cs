@@ -14,7 +14,7 @@ namespace CafeBar.Pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack) {
+            if (!IsPostBack) {
                 cargaMenuesEnDDL();
                 cargaBebidasEnDDL();
                 cargarPostresEnDDL();
@@ -60,7 +60,7 @@ namespace CafeBar.Pages
                 var postreElegido = ddlPostres.SelectedItem;
                 int id = int.Parse(hideID.Value);
 
-                var accion = PedidoServicio.Actualizar(id, txtFecha.Text, txtCliente.Text, menuElegido.Text, txtPrecioMenu.Text, bebidaElegida.Text, txtPrecioBebida.Text, postreElegido.Text, txtPrecioPostre.Text, lblCalculoTotal.Text, rdFormaPago.SelectedValue);
+                var accion = PedidoServicio.Actualizar(id, txtFecha.Text, txtCliente.Text, menuElegido.Text, txtPrecioMenu.Text, bebidaElegida.Text, txtPrecioBebida.Text, postreElegido.Text, txtPrecioPostre.Text, rdFormaPago.SelectedValue);
                 if (accion)
                 {
                     //sets the message and the type of alert, than displays the message
@@ -90,7 +90,7 @@ namespace CafeBar.Pages
         {
             var valor = ddlMenues.SelectedItem.Value;
             txtPrecioMenu.Text = valor;
-            txtPrecioMenu.Enabled = false;
+          //  txtPrecioMenu.Enabled = false;
             
         }
 

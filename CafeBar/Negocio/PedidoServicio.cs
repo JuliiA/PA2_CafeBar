@@ -11,7 +11,7 @@ namespace Negocio
     {
         public static bool Actualizar(int id, string fecha, string cliente, 
                                         string menu, string menuPrecio, string bebida, string bebidaPrecio, string postre, string postrePrecio, 
-                                        string precioTotal, string formaPago)
+                                        string formaPago)
         {
             Pedido nPedido = new Pedido
             {
@@ -33,7 +33,7 @@ namespace Negocio
             {
                var ok = PedidoDatos.AltaOModificacion(nPedido);
                 if (ok && id != 0)
-                    FacturaDatos.ActualizarImporte(id, precioTotal);
+                    FacturaDatos.ActualizarImporte(id, nPedido.MenuPrecio, nPedido.BebidaPrecio, nPedido.PostrePrecio);
 
                 return ok;
             }

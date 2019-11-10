@@ -53,6 +53,8 @@ namespace CafeBar.Pages
             if (e.CommandName == "cmdEliminar")
             {
                 bool okDelete = PedidoServicio.BorrarPedido(id);
+                contieneFormUC.Visible = false;
+                panelVerPedido.Visible = false;
                 CargarGrillaConPedidos();
             }
 
