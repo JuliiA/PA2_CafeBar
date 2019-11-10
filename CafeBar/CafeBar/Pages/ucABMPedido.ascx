@@ -1,10 +1,4 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucABMPedido.ascx.cs" Inherits="CafeBar.Pages.ucABMPedido" %>
-<script type="text/javascript">
-    function lnkCalcular() {
-        alert("calcular");///llamar a metodo en codebehind
-    }
-</script>  
-
 <!-- contact -->
   <section id="contact" class="section-padding">
     <div class="container">
@@ -41,13 +35,13 @@
         </div>
         <div class="col-md-8 col-sm-8">
           <form action="" method="post" role="form" class="contactForm">
-            <div id="sendmessage"></div>
-            <div id="errormessage"></div>
-
+              
+            <asp:HiddenField ID="hideID" runat="server" />
             <div class="col-md-6 col-sm-6 contact-form pad-form">
               <div class="form-group label-floating is-empty">
-                <input type="date" class="form-control label-floating is-empty" runat="server" name="txtFecha" id="txtFecha" placeholder="Date" data-rule="required" data-msg="This field is required" />
+                <asp:TextBox CssClass="form-control label-floating is-empty" runat="server" ID="txtFecha" placeholder="dd/mm/aaaa" />
                   <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Este campo es requerido" ControlToValidate="txtFecha" ForeColor="#990000"></asp:RequiredFieldValidator>
+                  <asp:RegularExpressionValidator ID="REV_txtFecVencimiento" runat="server" ControlToValidate="txtFecha" Display="None" SetFocusOnError="true" ErrorMessage="dd/mm/yyyy" ValidationExpression="^([0]?[1-9]|[1-2][0-9]|[3][0-1])/([0]?[1-9]|[1][0-2])/([1-3][0-9][0-9][0-9])$" />
                   <div class="validation"></div>
               </div>
             </div>
@@ -71,7 +65,7 @@
             <div class="col-md-6 col-sm-6 contact-form">
               <div class="form-group">
                 <%--<input type="time" class="form-control label-floating is-empty" name="time" id="time" placeholder="Time" data-rule="required" data-msg="This field is required" />--%>
-                  <asp:TextBox ID="txtPrecioMenu" runat="server" CssClass="form-control label-floating is-empty" Placeholder="$ Precio"></asp:TextBox>
+                  <asp:TextBox ID="txtPrecioMenu" runat="server" CssClass="form-control label-floating is-empty" Placeholder="$ Precio" OnTextChanged="CalcularPrecioTotal_TextChanged" AutoPostBack="true"></asp:TextBox>
                   <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="*" ControlToValidate="txtPrecioMenu" ForeColor="#990000"></asp:RequiredFieldValidator>
                   <asp:RangeValidator ID="RangeValidator1" runat="server" ErrorMessage="El monto ingresado no es válido" MaximumValue="1000" MinimumValue="0" ControlToValidate="txtPrecioMenu" Type="Double" ForeColor="#990000"></asp:RangeValidator>
                 <div class="validation"></div>
@@ -89,7 +83,7 @@
             <div class="col-md-6 col-sm-6 contact-form">
               <div class="form-group">
                 <%--<input type="text" class="form-control label-floating is-empty" name="people" id="people" placeholder="People" data-rule="required" data-msg="This field is required" />--%>
-                  <asp:TextBox ID="txtPrecioBebida" runat="server" CssClass="form-control label-floating is-empty" Placeholder="$ Precio"></asp:TextBox>
+                  <asp:TextBox ID="txtPrecioBebida" runat="server" CssClass="form-control label-floating is-empty" Placeholder="$ Precio" OnTextChanged="CalcularPrecioTotal_TextChanged" AutoPostBack="true"></asp:TextBox>
                   <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="*" ControlToValidate="txtPrecioBebida" ForeColor="#990000"></asp:RequiredFieldValidator>
                   <asp:RangeValidator ID="RangeValidator2" runat="server" ErrorMessage="El monto ingresado no es válido" MaximumValue="1000" MinimumValue="0" ControlToValidate="txtPrecioBebida" Type="Double" ForeColor="#990000"></asp:RangeValidator>
                 <div class="validation"></div>
@@ -107,17 +101,17 @@
             <div class="col-md-6 col-sm-6 contact-form">
               <div class="form-group">
                 <%--<input type="text" class="form-control label-floating is-empty" name="people" id="people" placeholder="People" data-rule="required" data-msg="This field is required" />--%>
-                  <asp:TextBox ID="txtPrecioPostre" runat="server" CssClass="form-control label-floating is-empty" Placeholder="$ Precio"></asp:TextBox>
+                  <asp:TextBox ID="txtPrecioPostre" runat="server" CssClass="form-control label-floating is-empty" Placeholder="$ Precio" OnTextChanged="CalcularPrecioTotal_TextChanged" AutoPostBack="true"></asp:TextBox>
                   <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="*" ControlToValidate="txtPrecioPostre" ForeColor="#990000"></asp:RequiredFieldValidator>
                   <asp:RangeValidator ID="RangeValidator3" runat="server" ErrorMessage="El monto ingresado no es válido" MaximumValue="1000" MinimumValue="0" ControlToValidate="txtPrecioPostre" Type="Double" ForeColor="#990000"></asp:RangeValidator>
                 <div class="validation"></div>
               </div>
             </div>
-            <div class="col-md-12 btnpad">
+<%--            <div class="col-md-12 btnpad">
               <div class="contacts-btn-pad">
                   <asp:LinkButton ID="lnkCalcular" runat="server" CssClass="btn btn-md btn-warning" OnClientClick="javascript: lnkCalcular();">Calcular Total</asp:LinkButton>
               </div>
-            </div>
+            </div>--%>
 
             <div class="col-md-12 btnpad">
               <div class="form-group label-floating is-empty">
@@ -144,7 +138,7 @@
                     <asp:Button ID="btnRegistrar" runat="server" Text="Registrar Pedido" CssClass="btn btn-imfo btn-read-more" OnClick="btnRegistrar_Click"/> 
                 </div>
                 <div class="col-md-5 btnpad"> 
-                    <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-default btn-read-more"/> 
+                    <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-default btn-read-more" OnClick="btnCancelar_Click"/> 
                 </div>
             </div>
           </form>
@@ -153,3 +147,9 @@
     </div>
   </section>
   <!-- / contact -->
+    <div class="MessagePanelDiv">
+        <asp:Panel ID="Message" runat="server" Visible="False">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <asp:Label ID="labelMessage" runat="server" />
+        </asp:Panel>
+    </div>

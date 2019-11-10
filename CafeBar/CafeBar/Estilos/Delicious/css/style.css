@@ -436,6 +436,7 @@ table {
     text-transform: uppercase;
     margin: 0 5px;
 }
+
 @media (min-width: 768px) and (max-width: 980px) {
     .content-holder h2 {
         font-size: 23px;

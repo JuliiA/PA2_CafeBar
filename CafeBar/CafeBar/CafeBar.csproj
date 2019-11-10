@@ -90,11 +90,12 @@
     <Content Include="Estilos\JQuery\jquery-1.4.1.js" />
     <Content Include="Estilos\JQuery\jquery-1.9.1.min.js" />
     <Content Include="Estilos\JQuery\jquery.validate.js" />
-    <Content Include="Index.html" />
     <Content Include="Pages\ControlPedidos.aspx" />
     <Content Include="Pages\SalonMesas.aspx" />
     <Content Include="Pages\ucABMPedido.ascx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pages\ControlPedidos.aspx.cs">

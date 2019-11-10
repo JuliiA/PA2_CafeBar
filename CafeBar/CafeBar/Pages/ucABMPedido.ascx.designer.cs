@@ -13,13 +13,22 @@ namespace CafeBar.Pages {
     public partial class ucABMPedido {
         
         /// <summary>
+        /// hideID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hideID;
+        
+        /// <summary>
         /// txtFecha control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtFecha;
+        protected global::System.Web.UI.WebControls.TextBox txtFecha;
         
         /// <summary>
         /// RequiredFieldValidator1 control.
@@ -29,6 +38,15 @@ namespace CafeBar.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        
+        /// <summary>
+        /// REV_txtFecVencimiento control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator REV_txtFecVencimiento;
         
         /// <summary>
         /// txtCliente control.
@@ -184,15 +202,6 @@ namespace CafeBar.Pages {
         protected global::System.Web.UI.WebControls.RangeValidator RangeValidator3;
         
         /// <summary>
-        /// lnkCalcular control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkCalcular;
-        
-        /// <summary>
         /// lblCalculoTotal control.
         /// </summary>
         /// <remarks>
@@ -236,5 +245,23 @@ namespace CafeBar.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancelar;
+        
+        /// <summary>
+        /// Message control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Message;
+        
+        /// <summary>
+        /// labelMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label labelMessage;
     }
 }

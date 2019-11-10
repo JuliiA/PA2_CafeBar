@@ -132,5 +132,5 @@
   </section>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="LeftColumnContent" Runat="Server">
-   <uc:Pedido runat="server"></uc:Pedido>
+   <uc:Pedido ID="ucForm" runat="server"></uc:Pedido>
 </asp:Content>

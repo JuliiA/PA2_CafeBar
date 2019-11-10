@@ -13,6 +13,8 @@ namespace CafeBar.Pages
         {
             //
             // servicio.mesa.validarSiHayPedidoPendiente()
+            HiddenField hidden = (HiddenField)ucForm.FindControl("hideID");
+            hidden.Value = "0";
         }
         
         protected void btnTodosLosPedidos_Click(object sender, EventArgs e)

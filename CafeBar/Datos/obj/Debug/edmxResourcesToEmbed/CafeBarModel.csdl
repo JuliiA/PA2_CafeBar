@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CafeBarBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Factura">
+    <Key>
+      <PropertyRef Name="FacturaID" />
+    </Key>
+    <Property Name="FacturaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Total" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="FormaPago" Type="Int32" />
+    <Property Name="Estado" Type="Int32" />
+    <NavigationProperty Name="Pedido" Relationship="CafeBarBDModel.FacturaPedido" FromRole="Factura" ToRole="Pedido" />
+    <Property Name="Baja" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Pedido">
+    <Key>
+      <PropertyRef Name="PedidoID" />
+    </Key>
+    <Property Name="PedidoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Cliente" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Menu" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MenuPrecio" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="Bebida" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="BebidaPrecio" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="Postre" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="PostrePrecio" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="ConEnvio" Type="Int32" />
+    <Property Name="Estado" Type="Int32" Nullable="false" />
+    <Property Name="FacturaID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Factura" Relationship="CafeBarBDModel.FacturaPedido" FromRole="Pedido" ToRole="Factura" />
+    <Property Name="Baja" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="CafeBarContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Facturas" EntityType="Self.Factura" />
+    <EntitySet Name="Pedidos" EntityType="Self.Pedido" />
+    <AssociationSet Name="FacturaPedido" Association="CafeBarBDModel.FacturaPedido">
+      <End Role="Factura" EntitySet="Facturas" />
+      <End Role="Pedido" EntitySet="Pedidos" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="FacturaPedido">
+    <End Type="CafeBarBDModel.Factura" Role="Factura" Multiplicity="1" />
+    <End Type="CafeBarBDModel.Pedido" Role="Pedido" Multiplicity="1" />
+  </Association>
+</Schema>

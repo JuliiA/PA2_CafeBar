@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CafeBarBDModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="CafeBarBDModelStoreContainer">
+    <EntitySet Name="Facturas" EntityType="CafeBarBDModel.Store.Facturas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Pedidos" EntityType="CafeBarBDModel.Store.Pedidos" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FacturaPedido" Association="CafeBarBDModel.Store.FacturaPedido">
+      <End Role="Factura" EntitySet="Facturas" />
+      <End Role="Pedido" EntitySet="Pedidos" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Facturas">
+    <Key>
+      <PropertyRef Name="FacturaID" />
+    </Key>
+    <Property Name="FacturaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="Total" Type="decimal" Nullable="true" Precision="5" Scale="2" />
+    <Property Name="FormaPago" Type="int" Nullable="true" />
+    <Property Name="Estado" Type="int" Nullable="true" />
+    <Property Name="Baja" Type="int" Nullable="true" />
+    <Property Name="Pedido_PedidoID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pedidos">
+    <Key>
+      <PropertyRef Name="PedidoID" />
+    </Key>
+    <Property Name="PedidoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="Cliente" Type="varchar" Nullable="false" MaxLength="300" />
+    <Property Name="Menu" Type="varchar" Nullable="false" MaxLength="250" />
+    <Property Name="MenuPrecio" Type="decimal" Nullable="false" Precision="5" Scale="2" />
+    <Property Name="Bebida" Type="varchar" Nullable="true" MaxLength="250" />
+    <Property Name="BebidaPrecio" Type="decimal" Nullable="true" Precision="5" Scale="2" />
+    <Property Name="Postre" Type="varchar" Nullable="true" MaxLength="250" />
+    <Property Name="PostrePrecio" Type="decimal" Nullable="true" Precision="5" Scale="2" />
+    <Property Name="ConEnvio" Type="int" Nullable="true" />
+    <Property Name="Estado" Type="int" Nullable="false" />
+    <Property Name="FacturaID" Type="int" Nullable="false" />
+    <Property Name="Baja" Type="int" Nullable="true" />
+  </EntityType>
+  <Association Name="FacturaPedido">
+    <End Role="Factura" Type="CafeBarBDModel.Store.Facturas" Multiplicity="*" />
+    <End Role="Pedido" Type="CafeBarBDModel.Store.Pedidos" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Pedido">
+        <PropertyRef Name="PedidoID" />
+      </Principal>
+      <Dependent Role="Factura">
+        <PropertyRef Name="Pedido_PedidoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

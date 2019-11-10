@@ -53,7 +53,30 @@ namespace CafeBar.Pages
 
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
-            
+            if (Page.IsValid)
+            {
+                var menuElegido = ddlMenues.SelectedItem;
+                var bebidaElegida = ddlBebidas.SelectedItem;
+                var postreElegido = ddlPostres.SelectedItem;
+                int id = int.Parse(hideID.Value);
+
+                var accion = PedidoServicio.Actualizar(id, txtFecha.Text, txtCliente.Text, menuElegido.Text, txtPrecioMenu.Text, bebidaElegida.Text, txtPrecioBebida.Text, postreElegido.Text, txtPrecioPostre.Text, lblCalculoTotal.Text, rdFormaPago.SelectedValue);
+                if (accion)
+                {
+                    //sets the message and the type of alert, than displays the message
+                    labelMessage.Text = "El pedido se ha actualizado correctamente";
+                    Message.CssClass = string.Format("alert alert-{0} alert-dismissable", "success");
+                    Message.Attributes.Add("role", "alert");
+                    Message.Visible = true;
+                }
+                else
+                {
+                    labelMessage.Text = "Ha ocurrido un error al intentar actualizar el pedido";
+                    Message.CssClass = string.Format("alert alert-{0} alert-dismissable", "danger");
+                    Message.Attributes.Add("role", "alert");
+                    Message.Visible = true;
+                }
+            }
         }
 
         protected void ddlBebidas_SelectedIndexChanged(object sender, EventArgs e)
@@ -61,15 +84,13 @@ namespace CafeBar.Pages
             var valor = ddlBebidas.SelectedItem.Value;
             txtPrecioBebida.Text = valor;
             //txtPrecioBebida.Enabled = false;
-            totalParcial = totalParcial + Convert.ToInt64(valor);
         }
 
         protected void ddlMenues_SelectedIndexChanged(object sender, EventArgs e)
         {
             var valor = ddlMenues.SelectedItem.Value;
             txtPrecioMenu.Text = valor;
-            //txtPrecioMenu.Enabled = false;
-            totalParcial = totalParcial + Convert.ToInt64(valor);
+            txtPrecioMenu.Enabled = false;
             
         }
 
@@ -77,15 +98,40 @@ namespace CafeBar.Pages
         {
             var valor = ddlPostres.SelectedItem.Value;
             txtPrecioPostre.Text = valor;
-            // txtPrecioPostre.Enabled = false;
-            totalParcial = totalParcial + Convert.ToInt64(valor);
+            //txtPrecioPostre.Enabled = false;
         }
 
-        protected void lnkCalcular_Click(object sender, EventArgs e)
+
+        protected void CalcularPrecioTotal_TextChanged(object sender, EventArgs e)
         {
-            totalParcial = (Convert.ToInt64(txtPrecioMenu.Text) + Convert.ToInt64(txtPrecioBebida.Text) + Convert.ToInt64(txtPrecioPostre.Text));
-            lblCalculoTotal.Text = "$" + totalParcial;
+            if(!string.IsNullOrEmpty(txtPrecioMenu.Text))
+                totalParcial = (Convert.ToInt64(txtPrecioMenu.Text));
+
+             if(!string.IsNullOrEmpty(txtPrecioBebida.Text))
+                totalParcial = totalParcial + (Convert.ToInt64(txtPrecioBebida.Text));
+
+             if (!string.IsNullOrEmpty(txtPrecioPostre.Text))
+                 totalParcial = totalParcial + (Convert.ToInt64(txtPrecioPostre.Text));
+
+             lblCalculoTotal.Text = "Precio Parcial a Pagar:  $" + totalParcial;
         }
 
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            LimpiarFormulario();
+        }
+
+        private void LimpiarFormulario()
+        {
+            txtFecha.Text = String.Empty;
+            txtCliente.Text = String.Empty;
+            ddlMenues.ClearSelection();
+            ddlBebidas.ClearSelection();
+            ddlPostres.ClearSelection();
+            txtPrecioBebida.Text = String.Empty;
+            txtPrecioMenu.Text = String.Empty;
+            txtPrecioPostre.Text = String.Empty;
+            lblCalculoTotal.Text = String.Empty;
+        }
     }
 }
