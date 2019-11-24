@@ -51,12 +51,12 @@ namespace Datos
            
         }
 
-        public static object GetAllPedidos() {
+        public static List<Pedido> GetAllPedidos() {
             var todosLosPedidos = (
                         from p in context.Pedidos
                         where p.Baja == 0
                         select p
-                ).ToList();
+                ).ToList() as List<Pedido>;
 
             return todosLosPedidos;
         }
@@ -68,6 +68,14 @@ namespace Datos
                           select p;
 
             return qPedido.FirstOrDefault();
+        }
+
+        public static List<string> ClientesParaFiltrar()
+        {
+            var qClientes = (from f in context.Pedidos
+                           where f.Baja == 0
+                           select f.Cliente).Distinct().ToList();
+            return qClientes;
         }
 
         public static bool BorrarPedido(int PedidoID) {
@@ -87,6 +95,14 @@ namespace Datos
                 return false;
                 throw e;
             }
+        }
+
+        public static List<DateTime> FechasParaFiltrar()
+        {
+            var qFechas = (from f in context.Pedidos
+                           where f.Baja == 0
+                           select f.Fecha).Distinct().ToList();
+            return qFechas;
         }
 
         public static bool Pagar(int id)

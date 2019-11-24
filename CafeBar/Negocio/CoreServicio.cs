@@ -15,6 +15,7 @@ namespace Negocio
         {
             public String Nombre { get; set; }
             public Int64 Precio { get; set; }
+            public int Id { get; set; }
         }
         #endregion
 
@@ -23,22 +24,22 @@ namespace Negocio
             return new List<Opcion>()
            //listaMenu.Add(new Opcion{ Nombre = "Café", Precio = Enums.Menues.CafeSolo.ToString() });
             {
-                new Opcion{ Nombre = "Café", Precio = Convert.ToInt64(Enums.Menues.CafeSolo)},
-                new Opcion{ Nombre = "Café con Leche", Precio = Convert.ToInt64(Enums.Menues.CafeConLecheSolo)},
-                new Opcion{ Nombre = "Capuccino", Precio = Convert.ToInt64(Enums.Menues.CapuccinoSolo)},
-                new Opcion{ Nombre = "Té", Precio = Convert.ToInt64(Enums.Menues.TeSolo)},
-                new Opcion{ Nombre = "Café + Medialunas", Precio = Convert.ToInt64(Enums.Menues.CafeConMedialunas)},
-                new Opcion{ Nombre = "Café con leche + Medaialunas", Precio = Convert.ToInt64(Enums.Menues.CafeConLecheConMedialunas)},
-                new Opcion{ Nombre = "Capuccino + Medialunas", Precio = Convert.ToInt64(Enums.Menues.CapuccinoConMedialunas)},
-                new Opcion{ Nombre = "Té + Medialunas", Precio = Convert.ToInt64(Enums.Menues.TeConMedialunas)},
-                new Opcion{ Nombre = "Café con lecha + Tostado", Precio = Convert.ToInt64(Enums.Menues.CafeConLecheConMedialunas)},
-                new Opcion{ Nombre = "Capuccino + Tostado", Precio = Convert.ToInt64(Enums.Menues.CapuccinoConTostado)},
-                new Opcion{ Nombre = "Té + Tostado", Precio = Convert.ToInt64(Enums.Menues.TeConTostado)},
-                new Opcion{ Nombre = "Arroz con Pollo", Precio = Convert.ToInt64(Enums.Menues.ArrozConPollo)},
-                new Opcion{ Nombre = "Milanesa + Guarnicion", Precio = Convert.ToInt64(Enums.Menues.MilanesaConGuarnicion)},
-                new Opcion{ Nombre = "Tallarines", Precio = Convert.ToInt64(Enums.Menues.Tallarines)},
-                new Opcion{ Nombre = "Tarta", Precio = Convert.ToInt64(Enums.Menues.Tarta)},
-                new Opcion{ Nombre = "Lasagna", Precio = Convert.ToInt64(Enums.Menues.Lasagna)}
+                new Opcion{ Id = 1, Nombre = "Café", Precio = Convert.ToInt64(Enums.Menues.CafeSolo)},
+                new Opcion{ Id = 2, Nombre = "Café con Leche", Precio = Convert.ToInt64(Enums.Menues.CafeConLecheSolo)},
+                new Opcion{ Id = 3, Nombre = "Capuccino", Precio = Convert.ToInt64(Enums.Menues.CapuccinoSolo)},
+                new Opcion{ Id = 4, Nombre = "Té", Precio = Convert.ToInt64(Enums.Menues.TeSolo)},
+                new Opcion{ Id = 5, Nombre = "Café + Medialunas", Precio = Convert.ToInt64(Enums.Menues.CafeConMedialunas)},
+                new Opcion{ Id = 6, Nombre = "Café con leche + Medaialunas", Precio = Convert.ToInt64(Enums.Menues.CafeConLecheConMedialunas)},
+                new Opcion{ Id = 7, Nombre = "Capuccino + Medialunas", Precio = Convert.ToInt64(Enums.Menues.CapuccinoConMedialunas)},
+                new Opcion{ Id = 8, Nombre = "Té + Medialunas", Precio = Convert.ToInt64(Enums.Menues.TeConMedialunas)},
+                new Opcion{ Id = 9, Nombre = "Café con lecha + Tostado", Precio = Convert.ToInt64(Enums.Menues.CafeConLecheConMedialunas)},
+                new Opcion{ Id = 10, Nombre = "Capuccino + Tostado", Precio = Convert.ToInt64(Enums.Menues.CapuccinoConTostado)},
+                new Opcion{ Id = 11, Nombre = "Té + Tostado", Precio = Convert.ToInt64(Enums.Menues.TeConTostado)},
+                new Opcion{ Id = 12, Nombre = "Arroz con Pollo", Precio = Convert.ToInt64(Enums.Menues.ArrozConPollo)},
+                new Opcion{ Id = 13, Nombre = "Milanesa + Guarnicion", Precio = Convert.ToInt64(Enums.Menues.MilanesaConGuarnicion)},
+                new Opcion{ Id = 14, Nombre = "Tallarines", Precio = Convert.ToInt64(Enums.Menues.Tallarines)},
+                new Opcion{ Id = 15, Nombre = "Tarta", Precio = Convert.ToInt64(Enums.Menues.Tarta)},
+                new Opcion{ Id = 16, Nombre = "Lasagna", Precio = Convert.ToInt64(Enums.Menues.Lasagna)}
             };
         }
 
@@ -46,13 +47,13 @@ namespace Negocio
         {
             return new List<Opcion>()
             {
-                new Opcion { Nombre = "Sin Pedir", Precio = Convert.ToInt64(Enums.Bebida.SinPedir)},
-                new Opcion { Nombre = "Gaseosa (500ml)", Precio = Convert.ToInt64(Enums.Bebida.GasesosaChica)},
-                new Opcion { Nombre = "Gaseosa (1.5ml)", Precio = Convert.ToInt64(Enums.Bebida.GasesosaGrande)},
-                new Opcion { Nombre = "Jugo (500ml)", Precio = Convert.ToInt64(Enums.Bebida.JugoChico)},
-                new Opcion { Nombre = "Jugo (1.5ml)", Precio = Convert.ToInt64(Enums.Bebida.JugoGrande)},
-                new Opcion { Nombre = "Cerveza", Precio = Convert.ToInt64(Enums.Bebida.Cerveza)},
-                new Opcion { Nombre = "Vino", Precio = Convert.ToInt64(Enums.Bebida.Vino)}
+                new Opcion { Id = 1, Nombre = "Sin Pedir", Precio = Convert.ToInt64(Enums.Bebida.SinPedir)},
+                new Opcion { Id = 2, Nombre = "Gaseosa (500ml)", Precio = Convert.ToInt64(Enums.Bebida.GasesosaChica)},
+                new Opcion { Id = 3, Nombre = "Gaseosa (1.5ml)", Precio = Convert.ToInt64(Enums.Bebida.GasesosaGrande)},
+                new Opcion { Id = 4, Nombre = "Jugo (500ml)", Precio = Convert.ToInt64(Enums.Bebida.JugoChico)},
+                new Opcion { Id = 5, Nombre = "Jugo (1.5ml)", Precio = Convert.ToInt64(Enums.Bebida.JugoGrande)},
+                new Opcion { Id = 6, Nombre = "Cerveza", Precio = Convert.ToInt64(Enums.Bebida.Cerveza)},
+                new Opcion { Id = 7, Nombre = "Vino", Precio = Convert.ToInt64(Enums.Bebida.Vino)}
             };
         }
 
@@ -60,11 +61,11 @@ namespace Negocio
         {
             return new List<Opcion>()
             {
-                new Opcion { Nombre = "Sin Pedir", Precio = Convert.ToInt64(Enums.Postre.SinPedir) },
-                new Opcion { Nombre = "Café", Precio = Convert.ToInt64(Enums.Postre.Cafe)},
-                new Opcion { Nombre = "Flan", Precio = Convert.ToInt64(Enums.Postre.Flan)},
-                new Opcion { Nombre = "Helado", Precio = Convert.ToInt64(Enums.Postre.Helado)},
-                new Opcion { Nombre = "Ensalada de Frutas", Precio = Convert.ToInt64(Enums.Postre.EnsaladaFrutas) }
+                new Opcion { Id = 1, Nombre = "Sin Pedir", Precio = Convert.ToInt64(Enums.Postre.SinPedir) },
+                new Opcion { Id = 2, Nombre = "Café", Precio = Convert.ToInt64(Enums.Postre.Cafe)},
+                new Opcion { Id = 3, Nombre = "Flan", Precio = Convert.ToInt64(Enums.Postre.Flan)},
+                new Opcion { Id = 4, Nombre = "Helado", Precio = Convert.ToInt64(Enums.Postre.Helado)},
+                new Opcion { Id = 5, Nombre = "Ensalada de Frutas", Precio = Convert.ToInt64(Enums.Postre.EnsaladaFrutas) }
             };
         }
 

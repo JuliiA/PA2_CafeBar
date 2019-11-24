@@ -41,7 +41,7 @@
               <div class="form-group label-floating is-empty">
                 <asp:TextBox CssClass="form-control label-floating is-empty" runat="server" ID="txtFecha" placeholder="dd/mm/aaaa" />
                   <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Este campo es requerido" ControlToValidate="txtFecha" ForeColor="#990000"></asp:RequiredFieldValidator>
-                  <asp:RegularExpressionValidator ID="REV_txtFecVencimiento" runat="server" ControlToValidate="txtFecha" Display="None" SetFocusOnError="true" ErrorMessage="dd/mm/yyyy" ValidationExpression="^([0]?[1-9]|[1-2][0-9]|[3][0-1])/([0]?[1-9]|[1][0-2])/([1-3][0-9][0-9][0-9])$" />
+                  <asp:RegularExpressionValidator ID="REV_txtFecVencimiento" runat="server" ControlToValidate="txtFecha" ErrorMessage="Formato incorrecto" ValidationExpression="^([0]?[1-9]|[1-2][0-9]|[3][0-1])/([0]?[1-9]|[1][0-2])/([1-3][0-9][0-9][0-9])$" />
                   <div class="validation"></div>
               </div>
             </div>
@@ -49,7 +49,8 @@
               <div class="form-group">
                 <%--<input type="text" name="txtCliente" class="form-control" id="txtCliente" placeholder="Cliente" data-rule="minlen:4" data-msg="Por favor ingrese un cliente a quien facturar" />--%>
                   <asp:TextBox ID="txtCliente" runat="server" Placeholder="Cliente" CssClass="form-control"></asp:TextBox>
-                   <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtCliente" ErrorMessage="Solo se permite texto" ValidationExpression="^[a-zA-Z ]*$" ForeColor="#990000"></asp:RegularExpressionValidator>
+                     <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ErrorMessage="Este campo es requerido" ControlToValidate="txtCliente" ForeColor="#990000"></asp:RequiredFieldValidator> 
+                  <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtCliente" ErrorMessage="Solo se permite texto" ValidationExpression="^[a-zA-Z ]*$" ForeColor="#990000"></asp:RegularExpressionValidator>
                   <div class="validation"></div>                
               </div>
             </div>
@@ -127,15 +128,18 @@
                <div class="form-group label-floating is-empty">
                    <asp:RadioButtonList CssClass="form-control" ID="rdFormaPago" runat="server">
                        <asp:ListItem Selected="True" Value="1" Text="Efectivo"></asp:ListItem>
-                       <asp:ListItem Value="2" Text="Tarjeta"></asp:ListItem>
+                       <%--<asp:ListItem Value="2" Text="Tarjeta" ></asp:ListItem>--%>
                    </asp:RadioButtonList>
               </div>
 
             </div>
 
             <div class="col-md-12 contact-form">
-                <div class="col-md-5 btnpad"> 
+                <div class="col-md-5 btnpad" id="divRegistrar" runat="server" visible="false"> 
                     <asp:Button ID="btnRegistrar" runat="server" Text="Registrar Pedido" CssClass="btn btn-imfo btn-read-more" OnClick="btnRegistrar_Click"/> 
+                </div>
+                <div class="col-md-5 btnpad" id="divActualizar" runat="server" visible="false"> 
+                    <asp:Button ID="btnActualizar" runat="server" Text="Actualizar Pedido" CssClass="btn btn-imfo btn-read-more" OnClick="btnRegistrar_Click"/> 
                 </div>
                 <div class="col-md-5 btnpad"> 
                     <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-default btn-read-more" OnClick="btnCancelar_Click"/> 

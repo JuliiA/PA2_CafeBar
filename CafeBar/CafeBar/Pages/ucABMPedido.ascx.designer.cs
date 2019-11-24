@@ -58,6 +58,15 @@ namespace CafeBar.Pages {
         protected global::System.Web.UI.WebControls.TextBox txtCliente;
         
         /// <summary>
+        /// RequiredFieldValidator8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator8;
+        
+        /// <summary>
         /// RegularExpressionValidator1 control.
         /// </summary>
         /// <remarks>
@@ -229,6 +238,15 @@ namespace CafeBar.Pages {
         protected global::System.Web.UI.WebControls.RadioButtonList rdFormaPago;
         
         /// <summary>
+        /// divRegistrar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divRegistrar;
+        
+        /// <summary>
         /// btnRegistrar control.
         /// </summary>
         /// <remarks>
@@ -236,6 +254,24 @@ namespace CafeBar.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnRegistrar;
+        
+        /// <summary>
+        /// divActualizar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divActualizar;
+        
+        /// <summary>
+        /// btnActualizar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnActualizar;
         
         /// <summary>
         /// btnCancelar control.

@@ -15,12 +15,33 @@ namespace CafeBar.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            CargarGrillaConPedidos();
+            CargarGrillaConPedidos(string.Empty, string.Empty, string.Empty);
+            Control control = (Control)modifPedido.FindControl("divActualizar");
+            control.Visible = true;
+
+            if (!IsPostBack)
+            {
+                CargarFiltros();
+            }
         }
 
-        private void CargarGrillaConPedidos()
+        private void CargarFiltros()
         {
-            var losPedidos = PedidoServicio.ObtenerPedidos();
+            Filtros(ddlEstadoFiltro, PedidoServicio.ObtenerFiltrosEstados());
+            Filtros(ddlFechaFiltro, PedidoServicio.ObtenerFiltrosFecha());
+            Filtros(ddlClienteFiltro, PedidoServicio.ObtenerFiltrosCliente());
+        }
+
+        private void Filtros(DropDownList ddlFiltro, List<CoreServicio.Opcion> filtros)
+        {
+            ddlFiltro.DataSource = filtros;
+            ddlFiltro.DataValueField = "Id";
+            ddlFiltro.DataTextField = "Nombre";
+            ddlFiltro.DataBind();
+        }
+        private void CargarGrillaConPedidos(string fecha, string cliente, string estado)
+        {
+            var losPedidos = PedidoServicio.ObtenerPedidos(fecha, cliente, estado); /// trae todos los pedidos sin filtros
             grdPedidos.DataSource = losPedidos;
             grdPedidos.DataBind();
         }
@@ -55,13 +76,15 @@ namespace CafeBar.Pages
                 bool okDelete = PedidoServicio.BorrarPedido(id);
                 contieneFormUC.Visible = false;
                 panelVerPedido.Visible = false;
-                CargarGrillaConPedidos();
+                CargarGrillaConPedidos(string.Empty, string.Empty,string.Empty);
             }
 
             if (e.CommandName == "cmdCambiar")
             {
                 bool okDelete = PedidoServicio.CambiarEstado(id);
-                CargarGrillaConPedidos();
+                contieneFormUC.Visible = false;
+                panelVerPedido.Visible = false;
+                CargarGrillaConPedidos(string.Empty, string.Empty, string.Empty);
             }
         }
 
@@ -127,6 +150,11 @@ namespace CafeBar.Pages
                 }
 
             }
+        }
+        
+        protected void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            CargarGrillaConPedidos(ddlFechaFiltro.SelectedItem.Text, ddlClienteFiltro.SelectedItem.Text, ddlEstadoFiltro.SelectedItem.Text);
         }
     }
 }

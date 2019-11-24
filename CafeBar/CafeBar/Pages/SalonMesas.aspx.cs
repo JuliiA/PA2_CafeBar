@@ -15,6 +15,9 @@ namespace CafeBar.Pages
             // servicio.mesa.validarSiHayPedidoPendiente()
             HiddenField hidden = (HiddenField)ucForm.FindControl("hideID");
             hidden.Value = "0";
+
+            Control control = (Control)ucForm.FindControl("divRegistrar");
+            control.Visible = true;
         }
         
         protected void btnTodosLosPedidos_Click(object sender, EventArgs e)
