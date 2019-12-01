@@ -8,6 +8,7 @@
         <EntityTypeShape EntityType="CafeBarBDModel.Factura" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CafeBarBDModel.Pedido" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="CafeBarBDModel.FacturaPedido" />
+        <EntityTypeShape EntityType="CafeBarBDModel.Menue" Width="1.5" PointX="5.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

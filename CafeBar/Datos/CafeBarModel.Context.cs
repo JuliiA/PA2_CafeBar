@@ -27,5 +27,6 @@ namespace Datos
     
         public DbSet<Factura> Facturas { get; set; }
         public DbSet<Pedido> Pedidos { get; set; }
+        public DbSet<Menue> Menues { get; set; }
     }
 }

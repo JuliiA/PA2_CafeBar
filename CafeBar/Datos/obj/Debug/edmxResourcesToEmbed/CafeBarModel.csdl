@@ -38,9 +38,20 @@
       <End Role="Factura" EntitySet="Facturas" />
       <End Role="Pedido" EntitySet="Pedidos" />
     </AssociationSet>
+    <EntitySet Name="Menues" EntityType="CafeBarBDModel.Menue" />
   </EntityContainer>
   <Association Name="FacturaPedido">
     <End Type="CafeBarBDModel.Factura" Role="Factura" Multiplicity="1" />
     <End Type="CafeBarBDModel.Pedido" Role="Pedido" Multiplicity="1" />
   </Association>
+  <EntityType Name="Menue">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Precio" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="Tipo" Type="Int32" />
+    <Property Name="Baja" Type="Int32" />
+  </EntityType>
 </Schema>

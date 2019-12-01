@@ -40,5 +40,16 @@
         <ScalarProperty Name="FacturaID" ColumnName="FacturaID" />
       </EndProperty>
     </AssociationSetMapping>
+    <EntitySetMapping Name="Menues">
+      <EntityTypeMapping TypeName="CafeBarBDModel.Menue">
+        <MappingFragment StoreEntitySet="Menues">
+          <ScalarProperty Name="Baja" ColumnName="Baja" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

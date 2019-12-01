@@ -81,6 +81,7 @@ namespace CafeBar.Pages
                     Message.Attributes.Add("role", "alert");
                     Message.Visible = true;
                     LimpiarFormulario();
+                    if (id > 0) { Page.Response.Redirect(Page.Request.Url.ToString(), true); }
                 }
                 else
                 {

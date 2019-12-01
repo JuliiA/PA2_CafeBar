@@ -3,14 +3,14 @@
   <section id="contact" class="section-padding">
     <div class="container">
       <div class="row">
-        <div class="col-md-12 text-center">
+        <div id="Speach" class="col-md-12 text-center">
           <h1 class="header-h">Ingresaremos tu pedido</h1>
-          <p class="header-p">Podés elegir de nuestro menú más arriba
+          <p class="header-p">Podés elegir de nuestro menú de la <a href="SalonMesas.aspx"> Home </a>
             <br>Elegí entre desayuno, almuerzo o cena! </p>
         </div>
       </div>
       <div class="row msg-row">
-        <div class="col-md-4 col-sm-4 mr-15">
+        <div id="agenda" class="col-md-4 col-sm-4 mr-15">
           <div class="media-2">
             <div class="media-left">
               <div class="contact-phone bg-1 text-center"><span class="phone-in-talk fa fa-phone"></span></div>

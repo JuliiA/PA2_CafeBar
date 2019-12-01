@@ -13,12 +13,48 @@ namespace CafeBar.Pages {
     public partial class SalonMesas {
         
         /// <summary>
-        /// ucForm control.
+        /// gvMenues control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::CafeBar.Pages.ucABMPedido ucForm;
+        protected global::System.Web.UI.WebControls.GridView gvMenues;
+        
+        /// <summary>
+        /// btnConfirmarPrecios control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnConfirmarPrecios;
+        
+        /// <summary>
+        /// btnOcultarGrilla control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnOcultarGrilla;
+        
+        /// <summary>
+        /// lnkEditar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkEditar;
+        
+        /// <summary>
+        /// lnkAgrear control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkAgrear;
     }
 }

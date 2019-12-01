@@ -66,6 +66,10 @@
       <DependentUpon>CafeBarModel.tt</DependentUpon>
     </Compile>
     <Compile Include="FacturaDatos.cs" />
+    <Compile Include="MenuDatos.cs" />
+    <Compile Include="Menue.cs">
+      <DependentUpon>CafeBarModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Pedido.cs">
       <DependentUpon>CafeBarModel.tt</DependentUpon>
     </Compile>

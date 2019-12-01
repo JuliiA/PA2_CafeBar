@@ -4,58 +4,53 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="CafeBarBDModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="CafeBarBDModelStoreContainer">
-    <EntitySet Name="Facturas" EntityType="CafeBarBDModel.Store.Facturas" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Pedidos" EntityType="CafeBarBDModel.Store.Pedidos" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="FacturaPedido" Association="CafeBarBDModel.Store.FacturaPedido">
-      <End Role="Factura" EntitySet="Facturas" />
-      <End Role="Pedido" EntitySet="Pedidos" />
-    </AssociationSet>
-  </EntityContainer>
-  <EntityType Name="Facturas">
-    <Key>
-      <PropertyRef Name="FacturaID" />
-    </Key>
-    <Property Name="FacturaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Fecha" Type="datetime" Nullable="false" />
-    <Property Name="Total" Type="decimal" Nullable="true" Precision="5" Scale="2" />
-    <Property Name="FormaPago" Type="int" Nullable="true" />
-    <Property Name="Estado" Type="int" Nullable="true" />
-    <Property Name="Baja" Type="int" Nullable="true" />
-    <Property Name="Pedido_PedidoID" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Pedidos">
-    <Key>
-      <PropertyRef Name="PedidoID" />
-    </Key>
-    <Property Name="PedidoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Fecha" Type="datetime" Nullable="false" />
-    <Property Name="Cliente" Type="varchar" Nullable="false" MaxLength="300" />
-    <Property Name="Menu" Type="varchar" Nullable="false" MaxLength="250" />
-    <Property Name="MenuPrecio" Type="decimal" Nullable="false" Precision="5" Scale="2" />
-    <Property Name="Bebida" Type="varchar" Nullable="true" MaxLength="250" />
-    <Property Name="BebidaPrecio" Type="decimal" Nullable="true" Precision="5" Scale="2" />
-    <Property Name="Postre" Type="varchar" Nullable="true" MaxLength="250" />
-    <Property Name="PostrePrecio" Type="decimal" Nullable="true" Precision="5" Scale="2" />
-    <Property Name="ConEnvio" Type="int" Nullable="true" />
-    <Property Name="Estado" Type="int" Nullable="false" />
-    <Property Name="FacturaID" Type="int" Nullable="false" />
-    <Property Name="Baja" Type="int" Nullable="true" />
-  </EntityType>
-  <Association Name="FacturaPedido">
-    <End Role="Factura" Type="CafeBarBDModel.Store.Facturas" Multiplicity="*" />
-    <End Role="Pedido" Type="CafeBarBDModel.Store.Pedidos" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="Pedido">
-        <PropertyRef Name="PedidoID" />
-      </Principal>
-      <Dependent Role="Factura">
-        <PropertyRef Name="Pedido_PedidoID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-</Schema></edmx:StorageModels>
+    <Schema Namespace="CafeBarBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Facturas">
+          <Key>
+            <PropertyRef Name="FacturaID" />
+          </Key>
+          <Property Name="FacturaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="Total" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="FormaPago" Type="int" />
+          <Property Name="Estado" Type="int" />
+          <Property Name="Pedido_PedidoID" Type="int" Nullable="false" />
+          <Property Name="Baja" Type="int" />
+        </EntityType>
+        <EntityType Name="Menues">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="150" />
+          <Property Name="Precio" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="Tipo" Type="int" />
+          <Property Name="Baja" Type="int" />
+        </EntityType>
+        <EntityType Name="Pedidos">
+          <Key>
+            <PropertyRef Name="PedidoID" />
+          </Key>
+          <Property Name="PedidoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="Cliente" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="Menu" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="MenuPrecio" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="Bebida" Type="varchar" MaxLength="250" />
+          <Property Name="BebidaPrecio" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="Postre" Type="varchar" MaxLength="250" />
+          <Property Name="PostrePrecio" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="ConEnvio" Type="int" />
+          <Property Name="Estado" Type="int" Nullable="false" />
+          <Property Name="FacturaID" Type="int" Nullable="false" />
+          <Property Name="Baja" Type="int" />
+        </EntityType>
+        <EntityContainer Name="CafeBarBDModelStoreContainer">
+          <EntitySet Name="Facturas" EntityType="Self.Facturas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menues" EntityType="Self.Menues" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pedidos" EntityType="Self.Pedidos" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CafeBarBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -97,11 +92,22 @@
             <End Role="Factura" EntitySet="Facturas" />
             <End Role="Pedido" EntitySet="Pedidos" />
           </AssociationSet>
+          <EntitySet Name="Menues" EntityType="CafeBarBDModel.Menue" />
         </EntityContainer>
         <Association Name="FacturaPedido">
           <End Type="CafeBarBDModel.Factura" Role="Factura" Multiplicity="1" />
           <End Type="CafeBarBDModel.Pedido" Role="Pedido" Multiplicity="1" />
         </Association>
+        <EntityType Name="Menue">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Precio" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="Tipo" Type="Int32" />
+          <Property Name="Baja" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -147,6 +153,17 @@
         <ScalarProperty Name="FacturaID" ColumnName="FacturaID" />
       </EndProperty>
     </AssociationSetMapping>
+          <EntitySetMapping Name="Menues">
+            <EntityTypeMapping TypeName="CafeBarBDModel.Menue">
+              <MappingFragment StoreEntitySet="Menues">
+                <ScalarProperty Name="Baja" ColumnName="Baja" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

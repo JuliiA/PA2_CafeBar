@@ -90,6 +90,7 @@
     <Content Include="Estilos\JQuery\jquery-1.4.1.js" />
     <Content Include="Estilos\JQuery\jquery-1.9.1.min.js" />
     <Content Include="Estilos\JQuery\jquery.validate.js" />
+    <Content Include="Pages\AltaPedido.aspx" />
     <Content Include="Pages\ControlPedidos.aspx" />
     <Content Include="Pages\SalonMesas.aspx" />
     <Content Include="Pages\ucABMPedido.ascx" />
@@ -98,6 +99,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\AltaPedido.aspx.cs">
+      <DependentUpon>AltaPedido.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\AltaPedido.aspx.designer.cs">
+      <DependentUpon>AltaPedido.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ControlPedidos.aspx.cs">
       <DependentUpon>ControlPedidos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

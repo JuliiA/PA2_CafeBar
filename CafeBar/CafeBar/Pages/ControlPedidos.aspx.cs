@@ -123,13 +123,13 @@ namespace CafeBar.Pages
 
             txtfecha.Text = Convert.ToDateTime(tFecha).ToString("dd/MM/yyyy");
             txtcliente.Text = tCliente.ToString();
-            ddlmenu.SelectedItem.Value = elMenu.Precio.ToString();
+            ddlmenu.SelectedItem.Value = elMenu.Id.ToString();
             txtmprecio.Text = Convert.ToInt64(tMPrecio).ToString();
             ddlmenu.SelectedItem.Text = elMenu.Nombre;
-            ddlbebida.SelectedItem.Value = laBebida.Precio.ToString();
+            ddlbebida.SelectedItem.Value = laBebida.Id.ToString();
             ddlbebida.SelectedItem.Text = laBebida.Nombre;
             txtbprecio.Text = Convert.ToInt64(tBPrecio).ToString();
-            ddlpostre.SelectedItem.Value = elPostre.Precio.ToString();
+            ddlpostre.SelectedItem.Value = elPostre.Id.ToString();
             ddlpostre.SelectedItem.Text = elPostre.Nombre;
             txtpprecio.Text = Convert.ToInt64(tPPrecio).ToString();
          }

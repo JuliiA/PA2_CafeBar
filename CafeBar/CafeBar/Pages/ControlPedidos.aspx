@@ -2,6 +2,13 @@
 <%@Register TagPrefix="uc" TagName="Pedido" Src="~/Pages/ucABMPedido.ascx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        #banner{ display: none;}
+
+        #Speach {
+            display: none;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <section id="event">
@@ -13,7 +20,7 @@
                 <h1 class="header-h">Todos los Pedidos</h1>
                 <p class="header-p">Los que se muestran son los que están pendientes de entregar</p>
                   <br />
-                  <a class="filter active btn btn-read-more" href="SalonMesas.aspx"> <i class="fa fa-list-ul"></i> Nuevo Pedido </a>
+                  <a class="filter active btn btn-read-more" href="AltaPedido.aspx"> <i class="fa fa-list-ul"></i> Nuevo Pedido </a>
               </div>
               <!-- ENd Cabecera -->
 
@@ -39,7 +46,7 @@
                 </div>
                 <div class="col-md-1">
                     <br />
-                    <asp:Button runat="server" ID="btnFiltrar" OnClick="btnFiltrar_Click" CssClass="btn btn-default" Text="Filtrar" />
+                    <asp:Button runat="server" ID="btnFiltrar" OnClick="btnFiltrar_Click" CssClass="btn btn-default" Text="Buscar" />
                 </div>
               </div>
                <!-- END Filtros-->
@@ -60,9 +67,18 @@
                                     <asp:BoundField DataField="Estado" HeaderText="Estado" />
                                     <asp:ButtonField CommandName="cmdEditar" ControlStyle-CssClass="btn btn-info" Text="<i class='fa fa-edit'></i>" />
                                     <asp:ButtonField CommandName="cmdVer" ControlStyle-CssClass="btn btn-warning" Text="<i class='fa fa-eye'></i>" />
-                                    <asp:ButtonField CommandName="cmdEliminar" ControlStyle-CssClass="btn btn-danger" Text="<i class='fa fa-trash-o'></i>" />
-                                    <asp:ButtonField HeaderText="Cerrar Pedido" CommandName="cmdCambiar" runat="server" ControlStyle-CssClass="btn btn-success" Text="<i class='fa fa-check-square'></i>"></asp:ButtonField>
-                                   
+                                    <%--<asp:ButtonField CommandName="cmdEliminar" ControlStyle-CssClass="btn btn-danger" Text="<i class='fa fa-trash-o'></i>" />--%>
+                                    <asp:TemplateField ShowHeader="False">
+                                            <ItemTemplate>
+                                                <asp:LinkButton ID="lnkEliminar" CssClass="btn btn-danger" runat="server" CommandName="cmdEliminar" OnClientClick="return confirm('Confirma eliminar el pedido?');" CommandArgument='<%# Container.DataItemIndex %>'><i class="fa fa-trash-o"></i> </asp:LinkButton>             
+                                            </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <%--<asp:ButtonField HeaderText="Cerrar Pedido" CommandName="cmdCambiar" runat="server" ControlStyle-CssClass="btn btn-success" Text="<i class='fa fa-check-square'></i>"></asp:ButtonField>--%>
+                                     <asp:TemplateField ShowHeader="False">
+                                            <ItemTemplate>
+                                                <asp:LinkButton ID="lnkCambiar" CssClass="btn btn-success" runat="server" CommandName="cmdCambiar" OnClientClick="return confirm('Confirma cambiar estado del pedido?');" CommandArgument='<%# Container.DataItemIndex %>'><i class="fa fa-check-square"></i> </asp:LinkButton>             
+                                            </ItemTemplate>
+                                    </asp:TemplateField>
                                 </Columns>
 
                             </asp:GridView>
