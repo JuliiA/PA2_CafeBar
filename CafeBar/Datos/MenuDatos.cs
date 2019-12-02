@@ -55,17 +55,41 @@ namespace Datos
             return qItemMenu.FirstOrDefault();
         }
 
+        private Menue GetMenuTrue(int idMenu)
+        {
+            var qItemMenu = from im in context.Menues
+                            where im.Id == idMenu 
+                            select im;
+
+            return qItemMenu.FirstOrDefault();
+        }
+
         public void ActualizarLista(List<Menue> list)
         {
             foreach (Menue item in list)
             {
-                Menue menu = GetMenu(item.Id);
+                Menue menu = GetMenuTrue(item.Id);
                 menu.Nombre = item.Nombre;
                 menu.Precio = item.Precio;
                 menu.Tipo = item.Tipo;
                 menu.Baja = item.Baja;
                 context.Entry(menu).State = EntityState.Modified;
             }
+        }
+
+        public bool AltaMenu(Menue nuevoMenu)
+        {
+            try
+            {
+                context.Menues.Add(nuevoMenu);
+                context.SaveChanges();
+                return true;
+            }
+            catch (Exception x)
+            {
+                return false;
+            }
+           
         }
     }
 }

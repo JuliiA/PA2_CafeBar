@@ -45,9 +45,9 @@ namespace CafeBar.Pages
         {
             ddlMenues.DataValueField = "Id";
             ddlMenues.DataTextField = "Nombre";
-            var listaMenu = CoreServicio.GetMenu();
+            var listaMenu = CoreServicio.GetMenu() as List<CoreServicio.Opcion>;
 
-            ddlMenues.DataSource = listaMenu;
+            ddlMenues.DataSource = listaMenu.Where(m => m.Baja == true).ToList();
             ddlMenues.DataBind();
         }
 

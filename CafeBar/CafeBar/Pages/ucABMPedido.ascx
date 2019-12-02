@@ -142,7 +142,7 @@
                     <asp:Button ID="btnActualizar" runat="server" Text="Actualizar Pedido" CssClass="btn btn-imfo btn-read-more" OnClick="btnRegistrar_Click"/> 
                 </div>
                 <div class="col-md-5 btnpad"> 
-                    <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-default btn-read-more" OnClick="btnCancelar_Click"/> 
+                    <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CausesValidation="false" CssClass="btn btn-default btn-read-more" OnClick="btnCancelar_Click"/> 
                 </div>
             </div>
           </form>

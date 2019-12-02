@@ -21,6 +21,7 @@
                 <p class="header-p">Los que se muestran son los que están pendientes de entregar</p>
                   <br />
                   <a class="filter active btn btn-read-more" href="AltaPedido.aspx"> <i class="fa fa-list-ul"></i> Nuevo Pedido </a>
+                  <a class="filter active btn btn-read-more" href="SalonMesas.aspx"> <i class="fa fa-home"></i> Home </a>
               </div>
               <!-- ENd Cabecera -->
 

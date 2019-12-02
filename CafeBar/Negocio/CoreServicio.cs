@@ -60,6 +60,19 @@ namespace Negocio
             // };
         }
 
+        public static bool AgregarMenu(Opcion nuevoMenu)
+        {
+            Menue nMenu = new Menue
+            {
+                Nombre = nuevoMenu.Nombre,
+                Precio = nuevoMenu.Precio,
+                Tipo = nuevoMenu.Tipo,
+                Baja = 0
+            };
+
+            return new MenuDatos().AltaMenu(nMenu);
+        }
+
         public static void ActualizarMenues(List<Opcion> list)
         {
             List<Menue> losMenues = new List<Menue>();

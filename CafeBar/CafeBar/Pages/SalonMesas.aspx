@@ -25,8 +25,8 @@
         </div>
 
         <div id="menu-wrapper">
-
-          <div class="breakfast menu-restaurant">
+            <asp:Label ID="lblMenuDinamico" runat="server" Text=""></asp:Label>
+         <%-- <div class="breakfast menu-restaurant">
             <span class="clearfix">
               <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Desayuno #1</a>
               <span style="left: 166px; right: 44px;" class="menu-line"></span>
@@ -114,8 +114,34 @@
               <span class="menu-price">$150.00</span>
             </span>
             <span class="menu-subtitle">Lasagna</span>
-          </div>
+          </div>--%>
         </div>
+
+
+
+          <!-- agregar menu -->
+        <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="addModalLabel">Agregar Menú</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        Men&uacute; : <asp:TextBox ID="txtAddMenu" runat="server"></asp:TextBox><br />
+                        Precio: <asp:TextBox ID="txtAddPrecio" TextMode="Number" runat="server"></asp:TextBox><br />
+                        Momento del menu <asp:DropDownList ID="ddlAddTipo" runat="server">
+                                            <asp:ListItem Text="Desayuno" Value="1"></asp:ListItem>
+                                            <asp:ListItem Text="Almuerzo" Value="2"></asp:ListItem>
+                                            <asp:ListItem Text="Cena" Value="3"></asp:ListItem>
+                                         </asp:DropDownList><br />
+                        <asp:Button ID="btnAgregar" runat="server" Text="Agregar" OnClick="btnAgregar_Click" />
+                    </div>
+                </div>
+            </div>
+          </div>
           <!-- edicion de datos del menu -->
           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
@@ -174,7 +200,7 @@
             <!-- AREA DE BOTONES EDICION MENU -->
           <%--<asp:LinkButton ID="lnkEditar" CssClass="btn btn-default" data-toggle="modal" data-target="#dataRegister" runat="server" CausesValidation="false" OnClick="lnkEditar_Click"><i class="fa fa-list-alt"></i>Editar Precios del Menú</asp:LinkButton>--%>
             <asp:LinkButton ID="lnkEditar" CssClass="btn btn-default" data-toggle="modal" data-target="#exampleModal" runat="server" CausesValidation="false"><i class="fa fa-list-alt"></i>Editar Precios del Menú</asp:LinkButton>
-            <asp:LinkButton ID="lnkAgrear" CssClass="btn btn-default" runat="server" CausesValidation="false"><i class="fa fa-plus-circle"></i> Agregar Menú</asp:LinkButton>
+            <asp:LinkButton ID="lnkAgrear" CssClass="btn btn-default" data-toggle="modal" data-target="#addModal" runat="server" CausesValidation="false"><i class="fa fa-plus-circle"></i> Agregar Menú</asp:LinkButton>
 
       </div>
     </div>

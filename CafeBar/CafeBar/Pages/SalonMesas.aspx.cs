@@ -13,7 +13,9 @@ namespace CafeBar.Pages
         {
             //
             // servicio.mesa.validarSiHayPedidoPendiente()
-           if (!IsPostBack) { cargarMenues(); }
+           if (!IsPostBack) {
+                cargarMenues();
+            }
         }
         
         protected void btnTodosLosPedidos_Click(object sender, EventArgs e)
@@ -67,15 +69,75 @@ namespace CafeBar.Pages
         private void cargarMenues()
         {
             var todos = Negocio.CoreServicio.GetMenu();
+            dibujarMenuDinamico(todos);
+
+            //Para la grilla Modal
             Session["losMenues"] = todos;
             gvMenues.DataSource = todos;
             gvMenues.DataBind();
 
         }
 
+        private void dibujarMenuDinamico(object todos)
+        {
+           var losMenues = todos as List<Negocio.CoreServicio.Opcion>;
+            string htmlConcat = string.Empty;
+
+            foreach (var item in losMenues.Where(m => m.Baja == true).ToList())
+            {
+                switch (item.Tipo)
+                {
+                    case 1: htmlConcat = htmlConcat + @"<div class='breakfast menu-restaurant'> 
+                                            <span class='clearfix'>
+                                                <a class='menu-title' href='#' data-meal-img='assets/img/restaurant/rib.jpg'>Desayuno #" + item.Id + "</a>" +
+                                                "<span style='left: 166px; right: 44px;' class='menu-line'></span><span class='menu-price'>$" + item.Precio + "</span>" +
+                                                "</span><span class='menu-subtitle'>" + item.Nombre + "</span></div>"; break;
+                    case 2: htmlConcat = htmlConcat + @"<div class='lunch menu-restaurant'><span class='clearfix'><a class='menu-title' href='#' data-meal-img='assets/img/restaurant/rib.jpg'>Almuerzo #"+item.Id+"</a>" +
+                            "<span style='left: 166px; right: 44px;' class='menu-line'></span><span class='menu-price'>$"+item.Precio+"</span></span>" +
+                            "<span class='menu-subtitle'>"+item.Nombre+"</span></div>";
+                        break;
+
+                    case 3: htmlConcat = htmlConcat + @"<div class='dinner menu-restaurant'><span class='clearfix'><a class='menu-title' href='#' data-meal-img='assets/img/restaurant/rib.jpg'>Cena #"+item.Id+"</a>" +
+                            "<span style='left: 166px; right: 44px;' class='menu-line'></span>" +
+                            "<span class='menu-price'>$"+item.Precio+"</span></span>" +
+                            "<span class='menu-subtitle'>"+item.Nombre+"</span></div>";
+                        break;
+                }
+            }
+
+            lblMenuDinamico.Text = htmlConcat;
+        }
+
         protected void btnOcultarGrilla_Click(object sender, EventArgs e)
         {
             // grillaMenúes.Visible = false;
+        }
+
+        protected void btnAgregar_Click(object sender, EventArgs e)
+        {
+            Negocio.CoreServicio.Opcion nuevoMenu = new Negocio.CoreServicio.Opcion();
+            nuevoMenu.Nombre = txtAddMenu.Text;
+            nuevoMenu.Precio = long.Parse(txtAddPrecio.Text);
+            nuevoMenu.Tipo = int.Parse(ddlAddTipo.SelectedItem.Value);
+
+            var accion = Negocio.CoreServicio.AgregarMenu(nuevoMenu);
+            if (accion)
+            {
+                string script = @"<script type='text/javascript'>
+                            alerta('El menu se agrego correctamente');
+                        </script>";
+
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+                Page.Response.Redirect(Page.Request.Url.ToString(), true);
+            }
+            else
+            {
+                string script = @"<script type='text/javascript'>
+                            alerta('No se pudo agregar el menu');
+                        </script>";
+
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+            }
         }
     }
 }

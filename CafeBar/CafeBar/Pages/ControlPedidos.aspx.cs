@@ -15,12 +15,11 @@ namespace CafeBar.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            CargarGrillaConPedidos(string.Empty, string.Empty, string.Empty);
-            Control control = (Control)modifPedido.FindControl("divActualizar");
-            control.Visible = true;
-
             if (!IsPostBack)
             {
+                CargarGrillaConPedidos(string.Empty, string.Empty, string.Empty);
+                Control control = (Control)modifPedido.FindControl("divActualizar");
+                control.Visible = true;
                 CargarFiltros();
             }
         }
@@ -48,10 +47,16 @@ namespace CafeBar.Pages
 
         protected void grdPedidos_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            //
             // Se obtiene indice de la row seleccionada
+            //
             int index = Convert.ToInt32(e.CommandArgument);
+
+            //
             // Obtengo el id de la entidad que se esta editando
-            int id = (int)grdPedidos.DataKeys[index].Value;
+            // en este caso de la entidad Person
+            //
+            int id = Convert.ToInt32(grdPedidos.DataKeys[index].Value);
 
             if (e.CommandName == "cmdEditar") {
                 contieneFormUC.Visible = true;
@@ -154,6 +159,9 @@ namespace CafeBar.Pages
         
         protected void btnFiltrar_Click(object sender, EventArgs e)
         {
+            contieneFormUC.Visible = false;
+            lblPedido.Text = "";
+            panelVerPedido.Visible = false;
             CargarGrillaConPedidos(ddlFechaFiltro.SelectedItem.Text, ddlClienteFiltro.SelectedItem.Text, ddlEstadoFiltro.SelectedItem.Text);
         }
     }
